@@ -1,9 +1,7 @@
 int gemstones(vector<string> arr)
 {
     int gems_count = 0;
-
     std::map<int, int> mp;
-    
 
     for (const auto& rock : arr)
     {
@@ -30,4 +28,3 @@ int gemstones(vector<string> arr)
 
     return gems_count;
 }
-
