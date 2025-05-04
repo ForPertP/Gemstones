@@ -42,3 +42,31 @@ int gemstones(vector<string> arr)
 
     return gems_count;
 }
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    vector<string> arr(n);
+
+    for (int i = 0; i < n; i++) {
+        string arr_item;
+        getline(cin, arr_item);
+
+        arr[i] = arr_item;
+    }
+
+    int result = gemstones(arr);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
