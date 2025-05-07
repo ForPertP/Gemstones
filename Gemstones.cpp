@@ -12,6 +12,27 @@ string rtrim(const string &);
  * The function accepts STRING_ARRAY arr as parameter.
  */
 
+
+int gemstones(vector<string> arr)
+{
+    bitset<26> common;
+    common.set();
+
+    for (const auto& rock : arr)
+    {
+        bitset<26> current;
+
+        for (char c : rock)
+            current.set(c - 'a');
+
+        common &= current;
+    }
+
+    return common.count();
+}
+
+
+
 int gemstones(vector<string> arr)
 {
     int gems_count = 0;
