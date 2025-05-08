@@ -32,6 +32,24 @@ int gemstones(vector<string> arr)
 }
 
 
+inline int popcount(uint32_t n)
+{
+#if defined(_MSC_VER)
+    return __popcnt(n);
+#elif defined(__GNUC__) || defined(__clang__)
+    return __builtin_popcount(n);
+#else
+    int count = 0;
+    while (n)
+    {
+        n &= (n - 1);
+        ++count;
+    }
+    return count;
+#endif
+}
+
+
 
 int gemstones(vector<string> arr)
 {
