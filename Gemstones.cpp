@@ -50,6 +50,81 @@ inline int popcount(uint32_t n)
 }
 
 
+int gemstones2(vector<string> arr)
+{
+    int common = (1 << 26) - 1;
+
+    for (const auto& rock : arr)
+    {
+        int mask = 0;
+        for (char c : rock)
+            mask |= 1 << (c - 'a');
+
+        common &= mask;
+    }
+
+    return popcount(common);
+}
+
+
+int gemstones3(vector<string> arr)
+{
+    int gems_count = 0;
+    std::map<int, int> mp;
+
+    for (const auto& rock : arr)
+    {
+        std::set<int> st;
+        for (char c : rock)
+        {
+            st.insert(c - 'a');
+        }
+
+        for (int ch : st)
+        {
+            mp[ch]++;
+        }
+    }
+
+    for (const auto& [ch, count] : mp)
+    {
+        if (count == arr.size())
+        {
+            gems_count++;
+        }
+    }
+
+    return gems_count;
+}
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    vector<string> arr(n);
+
+    for (int i = 0; i < n; i++) {
+        string arr_item;
+        getline(cin, arr_item);
+
+        arr[i] = arr_item;
+    }
+
+    int result = gemstones(arr);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
 
 int gemstones(vector<string> arr)
 {
