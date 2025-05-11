@@ -24,6 +24,23 @@ class Result
 
     public static int gemstones(List<string> arr)
     {
+        var common = new BitArray(26, true);
+
+        foreach (var rock in arr)
+        {
+            var current = new BitArray(26);
+            foreach (char c in rock)
+            {
+                current[c - 'a'] = true;
+            }
+            common.And(current);
+        }
+
+        int count = 0;
+        foreach (bool b in common)
+            if (b) count++;
+
+        return count;        
     }
 
 }
