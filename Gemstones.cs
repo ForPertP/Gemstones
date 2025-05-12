@@ -42,5 +42,53 @@ class Result
 
         return count;        
     }
+    
 
+    public static int PopCount(int n)
+    {
+        int count = 0;
+        while (n != 0)
+        {
+            n &= (n - 1);
+            count++;
+        }
+        return count;
+    }    
+
+    public static int gemstones2(List<string> arr)
+    {
+        int common = (1 << 26) - 1;
+
+        foreach (var rock in arr)
+        {
+            int mask = 0;
+            foreach (char c in rock)
+            {
+                mask |= 1 << (c - 'a');
+            }
+            common &= mask;
+        }
+
+        return PopCount(common);
+    }
+    
+    public static int gemstones2(List<string> arr)
+    {
+        int common = (1 << 26) - 1;
+
+        foreach (string rock in arr)
+        {
+            int mask = 0;
+            foreach (char c in rock)
+            {
+                mask |= 1 << (c - 'a');
+            }
+
+            common &= mask;
+        }
+
+        return PopCount(commmon);
+                
+    }
+            
 }
