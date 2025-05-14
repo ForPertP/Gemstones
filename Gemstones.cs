@@ -40,10 +40,10 @@ class Result
         foreach (bool b in common)
             if (b) count++;
 
-        return count;        
+        return count;
     }
     
-
+    
     public static int PopCount(int n)
     {
         int count = 0;
@@ -53,7 +53,7 @@ class Result
             count++;
         }
         return count;
-    }    
+    }
 
     public static int gemstones2(List<string> arr)
     {
@@ -72,23 +72,36 @@ class Result
         return PopCount(common);
     }
     
-    public static int gemstones2(List<string> arr)
+    
+    public static int gemstones3(List<string> arr)
     {
-        int common = (1 << 26) - 1;
+        int gemsCount = 0;
+        var mp = new Dictionary<int, int>();
 
-        foreach (string rock in arr)
+        foreach (var rock in arr)
         {
-            int mask = 0;
+            var st = new HashSet<int>();
             foreach (char c in rock)
             {
-                mask |= 1 << (c - 'a');
+                st.Add(c - 'a');
             }
 
-            common &= mask;
+            foreach (int ch in st)
+            {
+                if (mp.ContainsKey(ch))
+                    mp[ch]++;
+                else
+                    mp[ch] = 1;
+            }
         }
 
-        return PopCount(commmon);
-                
+        foreach (var pair in mp)
+        {
+            if (pair.Value == arr.Count)
+                gemsCount++;
+        }
+
+        return gemsCount;
     }
-            
+    
 }
