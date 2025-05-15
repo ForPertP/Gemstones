@@ -103,8 +103,8 @@ class Result
 
         return gemsCount;
     }
-    
 }
+
 
 class Solution
 {
