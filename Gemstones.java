@@ -18,4 +18,20 @@ class Result {
      * The function is expected to return an INTEGER.
      * The function accepts STRING_ARRAY arr as parameter.
      */
+
+    public static int gemstones(List<String> arr) {
+        BitSet common = new BitSet(26);
+        common.set(0, 26);
+
+        for (String rock : arr) {
+            BitSet current = new BitSet(26);
+            for (char c : rock.toCharArray()) {
+                current.set(c - 'a');
+            }
+            common.and(current);
+        }
+
+        return common.cardinality();
+    }
+    
 }
