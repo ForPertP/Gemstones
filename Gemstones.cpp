@@ -32,7 +32,6 @@ int gemstones(vector<string> arr)
 }
 
 
-
 inline int popcount(uint32_t n)
 {
 #if defined(_MSC_VER)
@@ -49,7 +48,6 @@ inline int popcount(uint32_t n)
     return count;
 #endif
 }
-
 
 int gemstones2(vector<string> arr)
 {
