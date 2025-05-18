@@ -32,6 +32,7 @@ int gemstones(vector<string> arr)
 }
 
 
+
 inline int popcount(uint32_t n)
 {
 #if defined(_MSC_VER)
@@ -90,6 +91,31 @@ int gemstones3(vector<string> arr)
     {
         if (count == arr.size())
         {
+            gems_count++;
+        }
+    }
+
+    return gems_count;
+}
+
+
+int gemstones4(std::vector<std::string> arr) {
+    int gems_count = 0;
+    std::map<int, int> mp;
+
+    for (size_t i = 0; i < arr.size(); ++i) {
+        std::set<int> st;
+        for (size_t j = 0; j < arr[i].length(); ++j) {
+            st.insert(arr[i][j] - 'a');
+        }
+
+        for (auto it = st.begin(); it != st.end(); ++it) {
+            mp[*it]++;
+        }
+    }
+
+    for (auto it = mp.begin(); it != mp.end(); ++it) {
+        if (it->second == arr.size()) {
             gems_count++;
         }
     }
