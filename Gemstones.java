@@ -43,5 +43,19 @@ class Result {
         }
         return count;
     }
+
+    public static int gemstones2(List<String> arr) {
+        int common = (1 << 26) - 1;
+
+        for (String rock : arr) {
+            int mask = 0;
+            for (char c : rock.toCharArray()) {
+                mask |= 1 << (c - 'a');
+            }
+            common &= mask;
+        }
+
+        return popCount(common);
+    }    
     
 }
