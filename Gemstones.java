@@ -56,6 +56,31 @@ class Result {
         }
 
         return popCount(common);
-    }    
-    
+    }
+
+
+    public static int gemstones3(List<String> arr) {
+        int gemsCount = 0;
+        Map<Integer, Integer> mp = new HashMap<>();
+
+        for (String rock : arr) {
+            Set<Integer> st = new HashSet<>();
+            for (char c : rock.toCharArray()) {
+                st.add(c - 'a');
+            }
+
+            for (int ch : st) {
+                mp.put(ch, mp.getOrDefault(ch, 0) + 1);
+            }
+        }
+
+        for (int count : mp.values()) {
+            if (count == arr.size()) {
+                gemsCount++;
+            }
+        }
+
+        return gemsCount;
+    }
 }
+
